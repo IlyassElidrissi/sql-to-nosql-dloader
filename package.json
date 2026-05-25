@@ -1,0 +1,21 @@
+{
+  "name": "sql-to-nosql-dloader-migration",
+  "version": "1.0.0",
+  "description": "Data migration pipeline from SQL to NoSQL using DLoader",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "migrate": "dloader --config config.yaml"
+  },
+  "keywords": [
+    "etl",
+    "migration",
+    "sql",
+    "nosql",
+    "mongodb",
+    "mysql",
+    "dloader"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
