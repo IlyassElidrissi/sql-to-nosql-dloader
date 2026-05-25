@@ -1,0 +1,32 @@
+version: "1.0"
+source:
+  type: "mysql"
+  connection:
+    host: "localhost"
+    port: 3306
+    user: "root"
+    database: "ecommerce_legacy"
+  tables:
+    - name: "customers"
+    - name: "orders"
+
+transformation:
+  strategy: "denormalization"
+  mapping:
+    - target_collection: "users"
+      source_table: "customers"
+      embed:
+        - table: "orders"
+          foreign_key: "customer_id"
+          local_key: "id"
+          relation: "one-to-many"
+          as_field: "order_history"
+
+target:
+  type: "mongodb"
+  connection:
+    uri: "mongodb://localhost:27017/ecommerce_modern"
+  options:
+    batch_size: 1000
+    write_concern: "majority"
+    
